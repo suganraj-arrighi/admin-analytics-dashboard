@@ -24,14 +24,12 @@ The project follows a standard React application structure:
 /
 ├── public/              # Static assets
 ├── src/
-│   ├── app/             # Core application logic and routing
 │   ├── assets/          # Images, fonts, etc.
 │   ├── components/      # Reusable UI components
 │   ├── context/         # React context providers
 │   ├── data/            # Mock data for development
 │   ├── pages/           # Application pages (Dashboard, Login, etc.)
 │   ├── styles/          # Global styles, variables, and mixins
-│   └── utils/           # Utility functions
 ├── index.html           # Main HTML entry point
 ├── package.json         # Project dependencies and scripts
 └── vite.config.ts     # Vite configuration
@@ -88,3 +86,6 @@ To check the code for any linting issues, run:
 ```sh
 npm run lint
 ```
+## Note:
+
+Added the Codebase-Overview.md file to explain what was done and how the project works.

@@ -1,36 +1,28 @@
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { USERS_LIST } from '../data/mockData';
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-  status: string;
-}
-
 interface UserContextType {
-  users: User[];
+  users: any[];
+  displayName: string;
+  setDisplayName: (name: string) => void;
   deleteUser: (id: number) => void;
-  updateUser: (updatedUser: User) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [users, setUsers] = useState<User[]>(USERS_LIST);
+  const [users, setUsers] = useState(USERS_LIST);
+  const [displayName, setDisplayName] = useState('Admin User');
 
   const deleteUser = (id: number) => {
     setUsers((prev) => prev.filter((user) => user.id !== id));
   };
 
-  const updateUser = (updatedUser: User) => {
-    setUsers((prev) => prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)));
-  };
-
-  const value = useMemo(() => ({ users, deleteUser, updateUser }), [users]);
-
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ users, displayName, setDisplayName, deleteUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export const useUsers = () => {

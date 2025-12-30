@@ -10,57 +10,60 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-
     if (email === 'admin@test.com' && password === '1234') {
       login(email);
     } else {
-      setError('Invalid email or password. Please try again.');
+      setError('Invalid credentials');
     }
   };
 
   return (
-    <main className="login-container">
-      <section className="login-card" aria-labelledby="login-heading">
-        <h1 id="login-heading">Admin Login</h1>
-        
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+    <main className="login-page">
+      <div className="login-card">
+        <h1>Sign In</h1>
+        <p className="subtitle">Enter your email and password to Sign In.</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">Your email</label>
             <input
-              type="email"
               id="email"
+              type="email"
+              placeholder="name@mail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@test.com"
               required
-              aria-required="true"
             />
           </div>
 
-          <div className="form-group">
+          <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
-              type="password"
               id="password"
+              type="password"
+              placeholder="********"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              aria-required="true"
             />
           </div>
 
-          {error && (
-            <div className="error-message" role="alert">
-              {error}
-            </div>
-          )}
+          {error && <p className="error-text" role="alert">{error}</p>}
 
-          <button type="submit" className="login-button">
-            Sign In
-          </button>
+          <button type="submit" className="btn-primary">SIGN IN</button>
         </form>
-      </section>
+
+        <div className="divider"></div>
+
+        <div className="social-logins">
+          <button className="btn-social">
+             <span className="icon">G</span> SIGN IN WITH GOOGLE
+          </button>
+        </div>
+        <p className="footer-text">
+          Not registered? <a href="#create">Create account</a>
+        </p>
+      </div>
     </main>
   );
 };

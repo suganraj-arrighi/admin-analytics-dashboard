@@ -8,13 +8,12 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: vars.$bg-main;
-  color: vars.$text-main;
+  background-color: #f0f2f5;
+  color: #344767;
 }
 
-// Global Focus Styles (WCAG Compliance)
 :focus-visible {
-  outline: 2px solid vars.$primary;
+  outline: 2px solid #344767;
   outline-offset: 2px;
 }
 
@@ -29,56 +28,119 @@ body {
   border: 0;
 }
 
-.app-layout {
+.material-layout {
   display: flex;
   min-height: 100vh;
+  background-color: #f0f2f5;
 
-  .sidebar {
-    width: 240px;
-    background: #1e293b;
+  .material-sidebar {
+    width: 260px;
+    background: linear-gradient(195deg, #42424a, #191919);
+    margin: 1rem;
+    border-radius: 12px;
+    padding: 1.5rem;
     color: white;
-    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14);
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      color: vars.$primary;
+    .sidebar-top {
+      flex: 1;
     }
 
-    ul {
-      list-style: none;
-      flex-grow: 1;
+    .sidebar-bottom {
+      margin-top: auto;
+      padding-top: 2rem;
+    }
 
-      li {
-        margin-bottom: 0.5rem;
-        a {
-          color: #cbd5e1;
-          text-decoration: none;
-          display: block;
-          padding: 0.75rem;
-          border-radius: 4px;
-          &:hover { background: #334155; color: white; }
+    .sidebar-brand {
+      font-weight: 700;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin: 1rem 0;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .nav-subtitle {
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 1rem;
+        opacity: 0.6;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-link {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: inherit;
+        width: 100%;
+        display: block;
+        padding: 0.75rem 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.2s ease-in-out;
+        font-size: 0.875rem;
+        font-weight: 300;
+
+        &.active {
+          background: #344767; 
+          color: white;
+          font-weight: 500;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.24);
+        }
+
+        &:hover:not(.active) {
+          background: rgba(255, 255, 255, 0.2);
+          color: white;
         }
       }
     }
-
-    .logout-btn {
-      background: #334155;
-      border: none;
-      color: white;
-      padding: 0.75rem;
-      cursor: pointer;
-      border-radius: 4px;
-      &:hover { background: vars.$error; }
-    }
   }
 
-  .content-area {
-    flex-grow: 1;
-    background: vars.$bg-main;
-    overflow-y: auto;
+  .main-content {
+    flex: 1;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+
+      .breadcrumb {
+        font-size: 0.85rem;
+        color: #7b809a;
+        font-weight: 400;
+      }
+    }
+    
+    .page-content {
+        flex: 1;
+    }
   }
 }

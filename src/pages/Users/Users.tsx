@@ -11,64 +11,70 @@ const Users: React.FC = () => {
   );
 
   return (
-    <main className="users-page">
-      <header className="page-header">
-        <h1>User Management</h1>
-        <div className="search-container">
-          <label htmlFor="user-search" className="sr-only">Search users by name</label>
-          <input
-            id="user-search"
-            type="search"
-            placeholder="Search by name..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+    <div className="users-page-container">
+      <div className="users-card-material">
+        <div className="table-header-dark">
+          <div className="header-flex">
+            <h3>Authors Table</h3>
+            <div className="search-wrapper">
+              <input 
+                type="text" 
+                placeholder="Search..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
-      </header>
 
-      <section className="table-responsive">
-        <table className="users-table">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Role</th>
-              <th scope="col">Status</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredUsers.length > 0 ? (
-              filteredUsers.map((user) => (
+        <div className="table-wrapper">
+          <table className="material-data-table">
+            <thead>
+              <tr>
+                <th>AUTHOR</th>
+                <th>FUNCTION</th>
+                <th>STATUS</th>
+                <th>ID</th>
+                <th aria-label="Actions"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredUsers.map((user) => (
                 <tr key={user.id}>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td><span className="badge-role">{user.role}</span></td>
+                  <td>
+                    <div className="author-cell">
+                      <div className="avatar-square">{user.name.charAt(0)}</div>
+                      <div className="info">
+                        <span className="name-primary">{user.name}</span>
+                        <span className="sub-text">{user.email}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="function-cell">
+                      <span className="role-primary">{user.role}</span>
+                    </div>
+                  </td>
                   <td>
                     <span className={`status-pill ${user.status.toLowerCase()}`}>
-                      {user.status}
+                      {user.status === 'Active' ? 'ONLINE' : 'OFFLINE'}
                     </span>
                   </td>
                   <td>
                     <button 
+                      className="delete-action" 
                       onClick={() => deleteUser(user.id)}
-                      className="delete-btn"
-                      aria-label={`Delete user ${user.name}`}
                     >
                       Delete
                     </button>
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={5} className="no-results">No users found.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </section>
-    </main>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 };
 

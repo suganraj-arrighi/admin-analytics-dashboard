@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate,Outlet, NavLink } from 'react-router-dom';
 
 import '../src/styles/global.scss';
 import { AuthProvider, useAuth } from "./context/AuthContext";
@@ -13,21 +13,54 @@ import { PublicRoute, ProtectedRoute } from "./routes";
 const DashboardLayout = () => {
   const { logout } = useAuth();
   return (
-    <div className="app-layout">
-      <nav className="sidebar" aria-label="Main Navigation">
-        <div className="logo">AdminPanel</div>
-        <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/users">Users</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
-        </ul>
-        <button onClick={logout} className="logout-btn">Logout</button>
-      </nav>
-      <div className="content-area">
-        <React.Suspense fallback={<div>Loading...</div>}>
+    <div className="material-layout">
+      <aside className="material-sidebar" aria-label="Main Navigation">
+        <div className="sidebar-brand">Admin Dashboard</div>
+        <hr className="sidebar-divider" />
+        <nav>
+          <ul className="nav-list">
+            <li className="nav-item">
+              <NavLink 
+                to="/dashboard" 
+                className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                to="/users" 
+                className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+              >
+                Tables
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                to="/settings" 
+                className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+              >
+                Profile
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className="sidebar-bottom">
+          <ul className="nav-list">
+            <li className="nav-item">
+              <button className="nav-link signout-btn" onClick={logout}>
+                 Sign Out
+              </button>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      
+      <main className="main-content">
+        <div className="page-content">
           <Outlet />
-        </React.Suspense>
-      </div>
+        </div>
+      </main>
     </div>
   );
 };
