@@ -12,7 +12,6 @@ const Login: React.FC = () => {
     e.preventDefault();
     setError('');
 
-    // Hardcoded credentials check
     if (email === 'admin@test.com' && password === '1234') {
       login(email);
     } else {

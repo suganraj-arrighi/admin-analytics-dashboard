@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Link, Outlet } from '
 
 import '../src/styles/global.scss';
 import { AuthProvider, useAuth } from "./context/AuthContext";
-import { PublicRoute, ProtectedRoute } from "./app/routes";
 import  { UserProvider } from "./context/UserContext";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import Settings from "./pages/Settings/Settings";
 import Users from "./pages/Users/Users";
+import { PublicRoute, ProtectedRoute } from "./routes";
 
-// Simple Layout Wrapper for Protected Pages
 const DashboardLayout = () => {
   const { logout } = useAuth();
   return (
@@ -36,7 +35,7 @@ const DashboardLayout = () => {
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <UserProvider> {/* Ensure UserProvider is inside AuthProvider */}
+      <UserProvider>
         <Router>
           <Routes>
             <Route element={<PublicRoute />}>

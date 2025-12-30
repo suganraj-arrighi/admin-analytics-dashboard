@@ -16,14 +16,12 @@ const Dashboard: React.FC = () => {
         </button>
       </header>
 
-      {/* KPI Section */}
       <section className="stats-grid" aria-label="Key Performance Indicators">
         <Card title="Total Users" value={DASHBOARD_STATS.totalUsers.toLocaleString()} />
         <Card title="Active Learners" value={DASHBOARD_STATS.activeLearners.toLocaleString()} />
         <Card title="Learning Hours" value={`${DASHBOARD_STATS.totalHours.toLocaleString()}h`} />
       </section>
 
-      {/* Custom CSS Chart Section */}
       <section className="chart-container" aria-labelledby="chart-heading">
         <h2 id="chart-heading">Monthly Language Growth</h2>
         <div className="bar-chart" role="img" aria-label="Bar chart showing JavaScript vs Python growth">

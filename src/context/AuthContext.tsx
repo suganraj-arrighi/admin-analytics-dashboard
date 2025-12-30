@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -14,7 +14,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 
   const login = (email: string) => {
-    // Note: In production, this would involve a JWT token
     localStorage.setItem('isAuth', 'true');
     localStorage.setItem('userEmail', email);
     setIsAuthenticated(true);
