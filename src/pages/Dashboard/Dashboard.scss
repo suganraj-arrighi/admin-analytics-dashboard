@@ -1,0 +1,76 @@
+@use '../../styles/variables' as vars;
+
+.dashboard-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .logout-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$radius;
+    cursor: pointer;
+    &:hover { background: #eee; }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .chart-container {
+    background: vars.$white;
+    padding: 2rem;
+    border-radius: vars.$radius;
+    box-shadow: vars.$shadow;
+
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 2rem;
+      height: 300px;
+      padding-top: 2rem;
+      border-bottom: 2px solid vars.$border-color;
+      margin-bottom: 1rem;
+    }
+
+    .chart-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    .bar-group {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 100%;
+    }
+
+    .bar {
+      width: 30px;
+      border-radius: 4px 4px 0 0;
+      transition: opacity 0.2s;
+      &:hover { opacity: 0.8; }
+      &.js { background: vars.$primary; }
+      &.py { background: vars.$success; }
+    }
+
+    .month-label {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: vars.$text-muted;
+    }
+  }
+}

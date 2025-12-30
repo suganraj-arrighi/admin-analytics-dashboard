@@ -1,0 +1,70 @@
+@use '../../styles/variables' as vars;
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+
+  .login-card {
+    background: vars.$white;
+    padding: 2.5rem;
+    border-radius: vars.$radius;
+    box-shadow: vars.$shadow;
+    width: 100%;
+    max-width: 400px;
+
+    h1 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid vars.$border-color;
+      border-radius: 4px;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: vars.$primary;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(vars.$primary, 0.2);
+      }
+    }
+  }
+
+  .error-message {
+    color: vars.$error;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    background: rgba(vars.$error, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .login-button {
+    width: 100%;
+    padding: 0.75rem;
+    background: vars.$primary;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+}

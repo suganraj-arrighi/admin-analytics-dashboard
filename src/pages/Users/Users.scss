@@ -1,0 +1,64 @@
+@use '../../styles/variables' as vars;
+
+.users-page {
+  padding: 2rem;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .search-container input {
+    padding: 0.6rem 1rem;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$radius;
+    width: 300px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    background: vars.$white;
+    border-radius: vars.$radius;
+    box-shadow: vars.$shadow;
+  }
+
+  .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid vars.$border-color;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: vars.$text-muted;
+    }
+
+    .status-pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      &.active { background: rgba(vars.$success, 0.1); color: vars.$success; }
+      &.inactive { background: rgba(vars.$text-muted, 0.1); color: vars.$text-muted; }
+    }
+
+    .delete-btn {
+      color: vars.$error;
+      background: transparent;
+      border: 1px solid vars.$error;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover { background: vars.$error; color: white; }
+    }
+  }
+}
